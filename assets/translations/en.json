@@ -1,0 +1,12 @@
+{
+    "homepage": {
+        "hotTabLabel": "Hot",
+        "discoverTabLabel": "Discover",
+        "watchTabLabel": "Watch",
+        "inboxTabLabel": "Inbox",
+        "checkBackSoonLabel": "Check back soon for new clips\n and creator content.",
+        "joinDiscordLabel": "In the meantime join our discord",
+        "discordButtonLabel": "Join Metaview Discord",
+        "hotTabTitle": "Trending Today "
+    }
+}
