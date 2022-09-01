@@ -13,8 +13,10 @@ import '../shared/theme/colors.dart';
 import '../shared/theme/theme_text_styles.dart';
 
 class HomeScreen extends StatelessWidget {
-  final double topBottomPadding = 40.0;
-  final double bottomContentPadding = 94.0;
+  final double topPadding = 40.0;
+  final double bottomContentPadding = 134.0;
+  final double sideContentPadding = 15.0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +33,9 @@ class HomeScreen extends StatelessWidget {
             Container(
               color: ThemeColors.black,
               padding: EdgeInsets.fromLTRB(
-                Sizes.padding.medium,
-                topBottomPadding,
-                Sizes.padding.medium,
+                sideContentPadding,
+                topPadding,
+                sideContentPadding,
                 0,
               ),
               child: _buildScreenContent(),
@@ -61,7 +63,8 @@ class HomeScreen extends StatelessWidget {
             details: '+10 New Videos',
             maxViews: 30,
             title: 'Smash Stockpile',
-            viewProgress: 0.4,
+            viewProgress: 0.5,
+            dominantColor: ThemeColors.yellow,
           ),
           SizedBox(height: Sizes.padding.extraLarge),
           PlaylistCard(
@@ -81,6 +84,7 @@ class HomeScreen extends StatelessWidget {
             title: 'Valorant Volume',
             viewProgress: 1,
             hasUnwatchedVideos: false,
+            dominantColor: ThemeColors.darkRed,
           ),
           DiscordCTAWidget(),
           SizedBox(height: bottomContentPadding),
@@ -97,9 +101,12 @@ class HomeScreen extends StatelessWidget {
       shaderCallback: (bounds) => gradient.createShader(
         Rect.fromLTWH(0, 0, bounds.width, bounds.height),
       ),
-      child: Text(
-        StringKeys.homepageKeys.hotTabTitle.tr(),
-        style: ThemeTextStyles.headers.extraLarge,
+      child: Padding(
+        padding: EdgeInsets.only(top: Sizes.padding.extraSmall),
+        child: Text(
+          StringKeys.homepageKeys.hotTabTitle.tr(),
+          style: ThemeTextStyles.headers.extraLarge,
+        ),
       ),
     );
 

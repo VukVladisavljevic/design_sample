@@ -20,6 +20,7 @@ class PlaylistCard extends StatelessWidget {
   final int maxViews;
   final double viewProgress;
   final bool hasUnwatchedVideos;
+  final Color? dominantColor;
 
   PlaylistCard({
     required this.imageUrl,
@@ -29,17 +30,24 @@ class PlaylistCard extends StatelessWidget {
     required this.maxViews,
     required this.viewProgress,
     this.hasUnwatchedVideos = true,
+
+    // To be used for optimizing results,
+    // sometimes resulting color is darker/brigher than envisioned in design
+    this.dominantColor,
   });
+
+  final bottomSpaceHeight = 44.0;
 
   @override
   Widget build(BuildContext context) {
-    final defaultColor = ThemeColors.darkYellow;
-
     return FutureBuilder<Color>(
         future: _getDominantColor(),
         builder: (context, snapshot) {
+          if (this.dominantColor != null) {
+            return _buildCardDecorations(dominantColor!);
+          }
           if (snapshot.connectionState != ConnectionState.done) {
-            return _buildCardDecorations(defaultColor);
+            return _buildCardDecorations(ThemeColors.grey3);
           }
           return _buildCardDecorations(snapshot.data!);
         });
@@ -47,7 +55,6 @@ class PlaylistCard extends StatelessWidget {
 
   Future<Color> _getDominantColor() async {
     var paletteGenerator = await PaletteGenerator.fromImageProvider(Image.asset(imageUrl).image);
-
     if (paletteGenerator.dominantColor == null) {
       return ThemeColors.darkYellow;
     } else {
@@ -59,32 +66,40 @@ class PlaylistCard extends StatelessWidget {
     final primaryDecoration = BoxDecoration(
       borderRadius: Sizes.cornerRadius.large,
       gradient: RadialGradient(
-        center: Alignment(-0.8, -0.8),
+        center: Alignment(-0.7, -0.8),
         radius: 1,
-        colors: [dominantColor.withOpacity(0.3), dominantColor.withOpacity(0.0)],
+        colors: [dominantColor.withOpacity(0.2), dominantColor.withOpacity(0)],
       ),
       boxShadow: [
-        BoxShadow(color: ThemeColors.white.withOpacity(0.05), blurRadius: 24),
-        BoxShadow(color: ThemeColors.white.withOpacity(0.03), blurRadius: 4),
+        BoxShadow(
+          color: ThemeColors.white.withOpacity(0.05),
+          blurRadius: 24,
+          offset: Offset(0, 12),
+        ),
+        BoxShadow(
+          color: ThemeColors.white.withOpacity(0.03),
+          blurRadius: 4,
+          offset: Offset(0, 2),
+        ),
       ],
     );
 
     final secondaryDecoration = BoxDecoration(
-      gradient: LinearGradient(
-        colors: [ThemeColors.grey4.withOpacity(0.3), ThemeColors.black],
-        begin: Alignment(-2, -3.0),
-        end: Alignment(1, 1),
-      ),
+      gradient: LinearGradient(colors: [
+        ThemeColors.black.withOpacity(0.8),
+        ThemeColors.black.withOpacity(0.9),
+      ]),
       borderRadius: Sizes.cornerRadius.large,
     );
 
     final borderDecoration = BoxDecoration(
       borderRadius: Sizes.cornerRadius.large,
       gradient: LinearGradient(
-        begin: Alignment(-0.8, -2.9),
+        begin: Alignment(-0.7, -0.8),
+        end: Alignment(0.1, 0.5),
         colors: [
-          ThemeColors.white.withOpacity(0.8),
-          ThemeColors.grey4.withOpacity(0.3),
+          ThemeColors.white.withOpacity(0.2),
+          ThemeColors.black.withOpacity(0.5),
         ],
       ),
     );
@@ -100,8 +115,6 @@ class PlaylistCard extends StatelessWidget {
             decoration: secondaryDecoration,
             child: Container(
               decoration: primaryDecoration,
-              // width: 350,
-              // height: 400,
               child: _buildCardContent(),
             ),
           ),
@@ -125,9 +138,7 @@ class PlaylistCard extends StatelessWidget {
               maxViews: maxViews,
               hasUnwatchedVideos: hasUnwatchedVideos,
             ),
-            // SizedBox(height: Sizes.padding.medium),
-            SizedBox(height: Sizes.padding.large),
-            SizedBox(height: Sizes.padding.large),
+            SizedBox(height: bottomSpaceHeight),
           ],
         ),
         _buildPlayButton(),
@@ -160,7 +171,7 @@ class PlaylistCard extends StatelessWidget {
 
   Widget _buildPlayButton() {
     final playButtonSize = 64.0;
-    final bottomPadding = 71.0;
+    final bottomPadding = 75.0;
     final rightPadding = 32.0;
 
     return Positioned(
@@ -172,14 +183,28 @@ class PlaylistCard extends StatelessWidget {
         child: ClipRRect(
           borderRadius: Sizes.cornerRadius.large,
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
             child: Container(
-              decoration: BoxDecoration(color: ThemeColors.white.withOpacity(0.15)),
+              decoration: BoxDecoration(
+                border: Border.all(width: Sizes.borders.small, color: ThemeColors.white.withOpacity(0.2)),
+                borderRadius: Sizes.cornerRadius.large,
+                color: ThemeColors.white.withOpacity(0.15),
+                boxShadow: [
+                  BoxShadow(
+                    color: ThemeColors.black.withOpacity(0.5),
+                    blurRadius: 3,
+                  ),
+                  BoxShadow(
+                    color: ThemeColors.white.withOpacity(0.1),
+                    blurRadius: 0,
+                  ),
+                ],
+              ),
               alignment: Alignment.center,
               child: Icon(
                 Icons.play_arrow,
                 color: ThemeColors.white,
-                size: Sizes.icon.large,
+                size: Sizes.icon.extraLarge,
               ),
             ),
           ),

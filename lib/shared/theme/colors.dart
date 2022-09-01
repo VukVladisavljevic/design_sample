@@ -7,6 +7,7 @@ class ThemeColors {
   static final Color yellow = Color(0xFFF2BC3D);
   static final Color darkYellow = Color(0xFF392904);
   static final Color red = Color(0xFFD93636);
+  static final Color darkRed = Color(0xFFC30912);
 
   static final Color black = Color(0xFF000000);
 

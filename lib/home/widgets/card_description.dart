@@ -1,8 +1,6 @@
 import 'package:design_sample/shared/theme/colors.dart';
 import 'package:design_sample/shared/theme/theme_text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import '../../shared/constants/sizes.dart';
 
@@ -14,7 +12,7 @@ class CardDescription extends StatelessWidget {
   final bool hasUnwatchedVideos;
 
   final double titleBottomPadding = 2.0;
-  final double viewProgressPadding = 2.5;
+  final double viewProgressPadding = 4;
 
   CardDescription({
     required this.title,
@@ -52,21 +50,28 @@ class CardDescription extends StatelessWidget {
     );
   }
 
-  Widget _buildViewProgress() => Container(
-        child: Row(
-          children: [
-            Icon(
+  Widget _buildViewProgress() {
+    double adjustmentPadding = 1.0;
+    return Container(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: adjustmentPadding),
+            child: Icon(
               Icons.remove_red_eye_outlined,
               color: currentViews == 0 ? ThemeColors.yellow : ThemeColors.grey1,
               size: Sizes.icon.small,
             ),
-            SizedBox(width: viewProgressPadding),
-            Text(
-              currentViews.toString() + "/" + maxViews.toString(),
-              style: ThemeTextStyles.body.medium
-                  .copyWith(color: currentViews == 0 ? ThemeColors.yellow : ThemeColors.grey1),
-            ),
-          ],
-        ),
-      );
+          ),
+          SizedBox(width: viewProgressPadding),
+          Text(
+            currentViews.toString() + "/" + maxViews.toString(),
+            style:
+                ThemeTextStyles.body.medium.copyWith(color: currentViews == 0 ? ThemeColors.yellow : ThemeColors.grey1),
+          ),
+        ],
+      ),
+    );
+  }
 }

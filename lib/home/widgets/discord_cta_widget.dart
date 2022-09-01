@@ -63,7 +63,7 @@ class DiscordCTAWidget extends StatelessWidget {
       gradient: LinearGradient(
         colors: [
           ThemeColors.yellow.withOpacity(0.9),
-          ThemeColors.black.withOpacity(0.4),
+          ThemeColors.black.withOpacity(0.5),
         ],
         begin: Alignment(0.5, -1.2),
         end: Alignment(0.5, -0.5),
@@ -81,15 +81,15 @@ class DiscordCTAWidget extends StatelessWidget {
     );
 
     return Container(
-      padding: EdgeInsets.all(0.5),
+      padding: EdgeInsets.all(Sizes.borders.small),
       decoration: borderDecoration,
       child: Container(
         decoration: primaryDecoration,
         child: Container(
           decoration: secondaryDecoration,
           child: MaterialButton(
-              padding: EdgeInsets.all(5),
-              onPressed: () {},
+              padding: EdgeInsets.all(Sizes.padding.extraSmall),
+              onPressed: null,
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: Sizes.padding.medium),
                 child: Row(
@@ -102,7 +102,7 @@ class DiscordCTAWidget extends StatelessWidget {
                     SizedBox(width: Sizes.padding.small),
                     Text(
                       StringKeys.homepageKeys.discordButtonLabel.tr(),
-                      style: ThemeTextStyles.body.button.copyWith(fontWeight: FontWeight.w500),
+                      style: ThemeTextStyles.body.button,
                     ),
                   ],
                 ),

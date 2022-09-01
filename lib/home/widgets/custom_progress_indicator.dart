@@ -1,10 +1,5 @@
-import 'dart:developer';
-
 import 'package:design_sample/shared/constants/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import '../../shared/theme/colors.dart';
 
@@ -36,8 +31,8 @@ class CustomProgressIndicator extends StatelessWidget {
             var filledWidth = constraints.maxWidth * viewProgress;
             BoxShadow? indicatorShadow = BoxShadow(
               color: ThemeColors.white.withOpacity(0.48),
-              blurRadius: 5,
-              spreadRadius: 5,
+              blurRadius: 8,
+              spreadRadius: 3,
               offset: Offset(-2, -6),
             );
 
@@ -65,61 +60,5 @@ class CustomProgressIndicator extends StatelessWidget {
         ],
       ),
     );
-
-    // return Container(
-    //   margin: EdgeInsets.symmetric(horizontal: Sizes.padding.large, vertical: 10),
-    //   child: ClipRRect(
-    //     borderRadius: Sizes.cornerRadius.small,
-    //     child: Stack(
-    //       children: [
-    //         LinearProgressIndicator(
-    //           backgroundColor: ThemeColors.white.withOpacity(0.1),
-    //           color: ThemeColors.yellow,
-    //           value: viewProgress,
-    //         ),
-    //         Container(
-    //           width: 1,
-    //           height: 20,
-    //           // alignment: Alignment.center,
-    //           decoration: BoxDecoration(
-    //             boxShadow: [
-    //               BoxShadow(
-    //                 color: ThemeColors.white,
-    //                 blurRadius: 5,
-    //                 spreadRadius: 5,
-    //                 offset: Offset(50, -10),
-    //               ),
-    //             ],
-    //           ),
-    //         ),
-    // LayoutBuilder(builder: ((context, constraints) {
-    //   var filledWidth = constraints.maxWidth * viewProgress;
-    //   if (filledWidth == 0) {
-    //     return Container();
-    //   }
-    //   return Row(
-    //     children: [
-    //       SizedBox(width: filledWidth - indicatorWidth),
-    //       Container(
-    //         width: 1,
-    //         height: 10,
-    // decoration: BoxDecoration(
-    //   boxShadow: [
-    //     BoxShadow(
-    //       color: ThemeColors.white,
-    //       blurRadius: 5,
-    //       spreadRadius: 5,
-    //       offset: Offset(0, -5),
-    //     ),
-    //   ],
-    // ),
-    //       ),
-    //     ],
-    //   );
-    //         // })),
-    //       ],
-    //     ),
-    //   ),
-    // );
   }
 }

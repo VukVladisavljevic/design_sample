@@ -27,6 +27,8 @@ flutter:
     - family: AktivGrotesk
       fonts:
         - asset: assets/fonts/AktivGrotesk-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/AktivGrotesk-Regular.ttf
           weight: 400
         - asset: assets/fonts/AktivGrotesk-Bold.ttf
           weight: 700
