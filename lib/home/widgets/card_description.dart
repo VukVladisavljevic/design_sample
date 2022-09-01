@@ -11,14 +11,17 @@ class CardDescription extends StatelessWidget {
   final String details;
   final int currentViews;
   final int maxViews;
+  final bool hasUnwatchedVideos;
 
   final double titleBottomPadding = 2.0;
+  final double viewProgressPadding = 2.5;
 
   CardDescription({
     required this.title,
     required this.details,
     required this.currentViews,
     required this.maxViews,
+    required this.hasUnwatchedVideos,
   });
 
   @override
@@ -37,7 +40,8 @@ class CardDescription extends StatelessWidget {
             children: [
               Text(
                 details,
-                style: ThemeTextStyles.body.medium.copyWith(color: ThemeColors.yellow),
+                style: ThemeTextStyles.body.medium
+                    .copyWith(color: hasUnwatchedVideos ? ThemeColors.yellow : ThemeColors.grey1),
               ),
               Spacer(),
               _buildViewProgress(),
@@ -53,13 +57,14 @@ class CardDescription extends StatelessWidget {
           children: [
             Icon(
               Icons.remove_red_eye_outlined,
-              color: ThemeColors.grey1,
+              color: currentViews == 0 ? ThemeColors.yellow : ThemeColors.grey1,
               size: Sizes.icon.small,
             ),
-            SizedBox(width: Sizes.padding.extraSmall),
+            SizedBox(width: viewProgressPadding),
             Text(
               currentViews.toString() + "/" + maxViews.toString(),
-              style: ThemeTextStyles.body.medium.copyWith(color: ThemeColors.grey1),
+              style: ThemeTextStyles.body.medium
+                  .copyWith(color: currentViews == 0 ? ThemeColors.yellow : ThemeColors.grey1),
             ),
           ],
         ),

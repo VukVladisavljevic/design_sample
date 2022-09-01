@@ -14,4 +14,6 @@ class ThemeColors {
   static final Color grey2 = Color(0xFFA19DAA);
   static final Color grey3 = Color(0xFF645F6D);
   static final Color grey4 = Color(0xFF28262C);
+
+  static final Color inactiveGrey = Color(0xFF504C57);
 }

@@ -16,8 +16,6 @@ dependencies:
   flutter_svg: ^1.0.0
   touch_ripple_effect: ^2.2.3
   palette_generator: ^0.3.3+2
-  flutter_glow: ^0.2.0
-  sums_inner: ^1.0.0+1
 
 dev_dependencies:
   flutter_test:
@@ -28,7 +26,7 @@ flutter:
   fonts:
     - family: AktivGrotesk
       fonts:
-        - asset: assets/fonts/AktivGrotesk-Regular.ttf
+        - asset: assets/fonts/AktivGrotesk-Medium.ttf
           weight: 400
         - asset: assets/fonts/AktivGrotesk-Bold.ttf
           weight: 700

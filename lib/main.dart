@@ -1,6 +1,5 @@
 import 'package:design_sample/app_constants.dart';
 import 'package:design_sample/home/home_screen.dart';
-import 'package:design_sample/shared/theme/app_themes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +29,7 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
-        theme: AppThemes.darkTheme,
+        theme: ThemeData(fontFamily: 'AktivGrotesk'),
         home: HomeScreen(),
       );
 }

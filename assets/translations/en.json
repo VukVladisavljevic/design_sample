@@ -4,9 +4,11 @@
         "discoverTabLabel": "Discover",
         "watchTabLabel": "Watch",
         "inboxTabLabel": "Inbox",
+        "profileTabLabel": "Profile",
         "checkBackSoonLabel": "Check back soon for new clips\n and creator content.",
         "joinDiscordLabel": "In the meantime join our discord",
         "discordButtonLabel": "Join Metaview Discord",
-        "hotTabTitle": "Trending Today "
+        "hotTabTitle": "Trending Today",
+        "emojiPart": " 🔥"
     }
 }

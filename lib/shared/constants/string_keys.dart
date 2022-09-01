@@ -17,4 +17,5 @@ class HomepageStringKeys {
   final String discordButtonLabel = '$homepage.discordButtonLabel';
 
   final String hotTabTitle = '$homepage.hotTabTitle';
+  final String emojiPart = '$homepage.emojiPart';
 }

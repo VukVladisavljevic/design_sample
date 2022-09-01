@@ -50,13 +50,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.16.0"
-  cupertino_icons:
-    dependency: transitive
-    description:
-      name: cupertino_icons
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.5"
   easy_localization:
     dependency: "direct main"
     description:
@@ -97,13 +90,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_glow:
-    dependency: "direct main"
-    description:
-      name: flutter_glow
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.0"
   flutter_localizations:
     dependency: transitive
     description: flutter
@@ -327,13 +313,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
-  sums_inner:
-    dependency: "direct main"
-    description:
-      name: sums_inner
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0+1"
   term_glyph:
     dependency: transitive
     description:

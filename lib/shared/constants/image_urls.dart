@@ -14,10 +14,10 @@ class Images {
 
 class IconUrl {
   final String playIcon = 'assets/icons/play_icon.png';
-  final String hotIcon = 'assets/icons/hot_icon.png';
-  final String inboxIcon = 'assets/icons/inbox_icon.png';
+  final String hotIcon = 'assets/icons/hot_icon.svg';
+  final String inboxIcon = 'assets/icons/inbox_icon.svg';
   final String profileIcon = 'assets/icons/profile_icon.png';
-  final String watchIcon = 'assets/icons/watch_icon.png';
-  final String discoverIcon = 'assets/icons/discover_icon.png';
+  final String watchIcon = 'assets/icons/watch_icon.svg';
+  final String discoverIcon = 'assets/icons/discover_icon.svg';
   final String discordIcon = 'assets/icons/discord_icon.svg';
 }

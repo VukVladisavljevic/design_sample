@@ -6,6 +6,7 @@ class Sizes {
   static final PaddingSize padding = PaddingSize();
   static final IconSize icon = IconSize();
   static final CornerRadius cornerRadius = CornerRadius();
+  static final Borders borders = Borders();
 }
 
 class PaddingSize {
@@ -17,8 +18,14 @@ class PaddingSize {
   final double extraSmall = 8.0;
 }
 
+class Borders {
+  final double medium = 1.0;
+  final double small = 0.5;
+}
+
 class IconSize {
-  final double large = 32.0;
+  final double extraLarge = 36.0;
+  final double large = 28.0;
   final double medium = 24.0;
   final double small = 12.0;
 }

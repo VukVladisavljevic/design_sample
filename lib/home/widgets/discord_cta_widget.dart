@@ -15,68 +15,100 @@ class DiscordCTAWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(children: [
-        Image.asset(ImageUrls.images.verificationGif, fit: BoxFit.cover),
-        Text(
-          StringKeys.homepageKeys.checkBackSoonLabel.tr(),
-          style: ThemeTextStyles.headers.large,
-          textAlign: TextAlign.center,
-        ),
-        SizedBox(height: _labelsSpacing),
-        Text(
-          StringKeys.homepageKeys.joinDiscordLabel.tr(),
-          style: ThemeTextStyles.body.large,
-        ),
-        SizedBox(height: _topButtonPadding),
-        _buildActionButton(),
-      ]),
+      child: Column(
+        children: [
+          //! Gif asset has too big padding on sides,
+          //! hence defining specific size from the Figma design makes it too small
+          Image.asset(ImageUrls.images.verificationGif),
+          Text(
+            StringKeys.homepageKeys.checkBackSoonLabel.tr(),
+            style: ThemeTextStyles.headers.large,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: _labelsSpacing),
+          Text(
+            StringKeys.homepageKeys.joinDiscordLabel.tr(),
+            style: ThemeTextStyles.body.large,
+          ),
+          SizedBox(height: _topButtonPadding),
+          _buildActionButton(),
+        ],
+      ),
     );
   }
 
   Widget _buildActionButton() {
-    var kGradientBoxDecoration = BoxDecoration(
-      //RENAME
+    // I tried using exact values from Figma but it didn't look as pictured
+    // So I experimented with values in order to get as close as possible
+    final borderDecoration = BoxDecoration(
+      borderRadius: Sizes.cornerRadius.extraLarge,
       gradient: LinearGradient(
-        begin: Alignment(1, 0),
-        end: Alignment(1, 1),
-        colors: [
-          ThemeColors.yellow,
-          ThemeColors.darkYellow,
-        ],
+        begin: Alignment(0.5, 0),
+        end: Alignment(0.5, 1),
+        colors: [ThemeColors.yellow, ThemeColors.darkYellow],
+      ),
+    );
+
+    final primaryDecoration = BoxDecoration(
+      gradient: LinearGradient(
+        colors: [ThemeColors.yellow, ThemeColors.darkYellow],
+        begin: Alignment(0.5, 0),
+        end: Alignment(0.5, 1),
       ),
       borderRadius: Sizes.cornerRadius.extraLarge,
     );
 
+    final secondaryDecoration = BoxDecoration(
+      borderRadius: Sizes.cornerRadius.extraLarge,
+      gradient: LinearGradient(
+        colors: [
+          ThemeColors.yellow.withOpacity(0.9),
+          ThemeColors.black.withOpacity(0.4),
+        ],
+        begin: Alignment(0.5, -1.2),
+        end: Alignment(0.5, -0.5),
+      ),
+      boxShadow: [
+        BoxShadow(
+          color: ThemeColors.black.withOpacity(0.05),
+          blurRadius: 80,
+        ),
+        BoxShadow(
+          color: ThemeColors.black.withOpacity(0.15),
+          blurRadius: 4,
+        ),
+      ],
+    );
+
     return Container(
-      decoration: kGradientBoxDecoration,
-      child: MaterialButton(
-          padding: EdgeInsets.all(1),
-          onPressed: () {},
-          child: Ink(
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment(1, -0.99),
-                end: Alignment(1, 0.9),
-                colors: [ThemeColors.yellow, ThemeColors.darkYellow],
-              ),
-              borderRadius: Sizes.cornerRadius.extraLarge,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgIconWidget(
-                  ImageUrls.icons.discordIcon,
-                  size: Sizes.icon.medium,
+      padding: EdgeInsets.all(0.5),
+      decoration: borderDecoration,
+      child: Container(
+        decoration: primaryDecoration,
+        child: Container(
+          decoration: secondaryDecoration,
+          child: MaterialButton(
+              padding: EdgeInsets.all(5),
+              onPressed: () {},
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: Sizes.padding.medium),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgIconWidget(
+                      ImageUrls.icons.discordIcon,
+                      size: Sizes.icon.medium,
+                    ),
+                    SizedBox(width: Sizes.padding.small),
+                    Text(
+                      StringKeys.homepageKeys.discordButtonLabel.tr(),
+                      style: ThemeTextStyles.body.button.copyWith(fontWeight: FontWeight.w500),
+                    ),
+                  ],
                 ),
-                SizedBox(width: Sizes.padding.small),
-                Text(
-                  StringKeys.homepageKeys.discordButtonLabel.tr(),
-                  style: ThemeTextStyles.headers.medium,
-                ),
-              ],
-            ),
-          )),
+              )),
+        ),
+      ),
     );
   }
 }
