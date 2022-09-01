@@ -70,7 +70,7 @@ class DiscordCTAWidget extends StatelessWidget {
       ),
       boxShadow: [
         BoxShadow(
-          color: ThemeColors.black.withOpacity(0.05),
+          color: ThemeColors.black.withOpacity(0.25),
           blurRadius: 80,
         ),
         BoxShadow(

@@ -95,11 +95,11 @@ class PlaylistCard extends StatelessWidget {
     final borderDecoration = BoxDecoration(
       borderRadius: Sizes.cornerRadius.large,
       gradient: LinearGradient(
-        begin: Alignment(-0.7, -0.8),
+        begin: Alignment(-0.9, -0.2),
         end: Alignment(0.1, 0.5),
         colors: [
           ThemeColors.white.withOpacity(0.2),
-          ThemeColors.black.withOpacity(0.5),
+          ThemeColors.black.withOpacity(0.4),
         ],
       ),
     );
@@ -115,6 +115,8 @@ class PlaylistCard extends StatelessWidget {
             decoration: secondaryDecoration,
             child: Container(
               decoration: primaryDecoration,
+              // width: 200,
+              // height: 300,
               child: _buildCardContent(),
             ),
           ),
@@ -164,14 +166,15 @@ class PlaylistCard extends StatelessWidget {
       child: Image.asset(
         imageUrl,
         width: double.infinity,
-        fit: BoxFit.fitWidth,
+        // height: 288,
+        fit: BoxFit.cover,
       ),
     );
   }
 
   Widget _buildPlayButton() {
     final playButtonSize = 64.0;
-    final bottomPadding = 75.0;
+    final bottomPadding = 74.0;
     final rightPadding = 32.0;
 
     return Positioned(
@@ -183,28 +186,44 @@ class PlaylistCard extends StatelessWidget {
         child: ClipRRect(
           borderRadius: Sizes.cornerRadius.large,
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+            filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(width: Sizes.borders.small, color: ThemeColors.white.withOpacity(0.2)),
+                border: Border.all(
+                  width: Sizes.borders.small,
+                  color: ThemeColors.white.withOpacity(0.1),
+                ),
                 borderRadius: Sizes.cornerRadius.large,
-                color: ThemeColors.white.withOpacity(0.15),
+                color: ThemeColors.white.withOpacity(0.1),
                 boxShadow: [
                   BoxShadow(
                     color: ThemeColors.black.withOpacity(0.5),
-                    blurRadius: 3,
+                    blurRadius: 1,
                   ),
                   BoxShadow(
-                    color: ThemeColors.white.withOpacity(0.1),
-                    blurRadius: 0,
+                    color: ThemeColors.white.withOpacity(0.05),
+                    blurRadius: 20,
+                    spreadRadius: 3,
                   ),
                 ],
               ),
               alignment: Alignment.center,
-              child: Icon(
-                Icons.play_arrow,
-                color: ThemeColors.white,
-                size: Sizes.icon.extraLarge,
+              child: Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: ThemeColors.white.withOpacity(0.2),
+                      blurRadius: 12,
+                      spreadRadius: 12,
+                      offset: Offset(0, 2),
+                    )
+                  ],
+                ),
+                child: Icon(
+                  Icons.play_arrow,
+                  color: ThemeColors.white,
+                  size: Sizes.icon.extraLarge,
+                ),
               ),
             ),
           ),
