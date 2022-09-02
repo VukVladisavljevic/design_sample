@@ -97,7 +97,7 @@ class _BottomBarState extends State<BottomBar> {
         break;
       case TabType.Inbox:
         label = StringKeys.homepageKeys.inboxTabLabel.tr();
-
+        index = 3;
         iconWidget = SvgIconWidget(
           ImageUrls.icons.inboxIcon,
           color: _selectedTab == 3 ? ThemeColors.yellow : ThemeColors.inactiveGrey,
@@ -106,7 +106,7 @@ class _BottomBarState extends State<BottomBar> {
         break;
       case TabType.Profile:
         label = StringKeys.homepageKeys.profileTabLabel.tr();
-
+        index = 4;
         iconWidget = Image.asset(
           ImageUrls.icons.profileIcon,
           width: iconSize,
